@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Madrid - Site Oficial</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top shadow">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand mb-0 h1">
+                <img src="https://www.realmadrid.com/img/header/escudo.png" alt="Real Madrid" height="45" class="me-2">
+                <strong>Real Madrid</strong>
+            </a>
+            <span class="text-white-50 ms-auto">Temporada 2025/26</span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container-fluid text-center py-5">
+            <h1 class="display-4 text-white mb-2">Real Madrid Club de Fútbol</h1>
+            <p class="lead text-white mb-0">O Clube Mais Vitorioso da Europa</p>
+            <p class="text-white-50">Explore nossos jogadores e conheça a história do maior campeão europeu</p>
+        </div>
+    </div>
+
+    <!-- History Section -->
+    <div class="container-fluid py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2 class="mb-4">Sobre o Real Madrid</h2>
+                    <p class="text-justify">
+                        O Real Madrid Club de Fútbol é um clube de futebol profissional baseado em Madrid, Espanha. 
+                        Fundado em 1902, é um dos clubes mais bem-sucedidos do futebol europeu e mundial, 
+                        com 15 títulos da Liga dos Campeões da UEFA, o maior recorde na competição.
+                    </p>
+                    <p class="text-justify">
+                        O clube é conhecido por seu sucesso internacional, especialmente em competições europeias, 
+                        e sua capacidade de atrair os melhores talentos do futebol mundial. 
+                        O Real Madrid tem uma base de fãs global e é um dos clubes mais valiosos do mundo.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="card bg-white">
+                        <div class="card-body">
+                            <h4 class="card-title mb-3">Troféus Principais</h4>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">🏆 15x Liga dos Campeões da UEFA</li>
+                                <li class="list-group-item">🏆 34x La Liga (Campeonato Espanhol)</li>
+                                <li class="list-group-item">🏆 13x Copa del Rey</li>
+                                <li class="list-group-item">🏆 8x Supercopa da UEFA</li>
+                                <li class="list-group-item">🏆 5x Copa Intercontinental / Clube Mundial</li>
+                                <li class="list-group-item">🏆 4x Supercopa de Espanha</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Players Section -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <h2 class="mb-4">Elenco Atual - Temporada 2025/26</h2>
+            
+            <!-- Legenda de Posições -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="d-flex flex-wrap gap-3 justify-content-center">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-warning">Goleiro</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-danger">Defesa</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-info">Meio-Campo</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-success">Ataque</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Loading Message -->
+            <div id="loading" class="text-center mb-4">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Carregando...</span>
+                </div>
+                <p class="mt-2">Carregando dados dos jogadores...</p>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error" class="alert alert-danger d-none" role="alert">
+                <strong>Erro!</strong> <span id="errorMessage"></span>
+            </div>
+
+            <!-- Players Grid -->
+            <div id="playersContainer" class="row g-4">
+                <!-- Jogadores serão carregados aqui -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-2">Real Madrid Club de Fútbol © 2026</p>
+            <p class="text-muted small">Dados obtidos via API de Futebol | Desenvolvido com HTML, CSS e JavaScript</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
