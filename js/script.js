@@ -1,73 +1,39 @@
-// script.js - Script principal da página de listagem
-
-/**
- * Elementos do DOM
- */
 const playersContainer = document.getElementById('playersContainer');
 const loadingDiv = document.getElementById('loading');
 const errorDiv = document.getElementById('error');
 const errorMessage = document.getElementById('errorMessage');
 
-/**
- * Inicializa a página
- */
 async function init() {
     try {
-        // Mostrar carregamento
         loadingDiv.style.display = 'block';
         errorDiv.classList.add('d-none');
-        playersContainer.innerHTML = '';
-
-        // Buscar lista de jogadores
         const players = await getPlayersList();
-
-        // Verificar se obteve dados
-        if (!players || players.length === 0) {
-            throw new Error('Nenhum jogador encontrado');
-        }
-
-        // Esconder carregamento
         loadingDiv.style.display = 'none';
-
-        // Renderizar jogadores
+        if (!players || players.length === 0) throw new Error('Nenhum jogador');
         renderPlayers(players);
     } catch (error) {
-        console.error('Erro ao inicializar página:', error);
         loadingDiv.style.display = 'none';
         errorDiv.classList.remove('d-none');
-        errorMessage.textContent = error.message || 'Erro ao carregar jogadores';
+        errorMessage.textContent = error.message || 'Erro ao carregar';
     }
 }
 
-/**
- * Mapeia posições para cores
- */
 function getPositionBadgeClass(position) {
     const pos = position?.toLowerCase() || '';
     if (pos.includes('goalkeeper')) return 'bg-warning';
     if (pos.includes('defender')) return 'bg-danger';
     if (pos.includes('midfielder')) return 'bg-info';
-    if (pos.includes('winger') || pos.includes('striker')) return 'bg-success';
-    return 'bg-secondary';
+    return 'bg-success';
 }
 
-/**
- * Traduz posição para português
- */
 function translatePosition(position) {
     const pos = position?.toLowerCase() || '';
     if (pos.includes('goalkeeper')) return 'Goleiro';
-    if (pos.includes('defender')) return 'Zagueiro';
-    if (pos.includes('midfielder')) return 'Meio-Campo';
-    if (pos.includes('winger')) return 'Ponta';
-    if (pos.includes('striker')) return 'Atacante';
-    return position || 'N/A';
+    if (pos.includes('defender')) return 'Defesa';
+    if (pos.includes('midfielder')) return 'Meio';
+    return 'Ataque';
 }
 
-/**
- * Renderiza os jogadores na página
- * @param {Array} players - Array de jogadores
- */
 function renderPlayers(players) {
     playersContainer.innerHTML = '';
 
@@ -93,11 +59,9 @@ function renderPlayers(players) {
                     ${positionTranslated}
                 </div>
                 <div class="player-image-wrapper">
-                    <img src="${imageUrl}" 
-                         class="card-img-top player-image" 
-                         alt="${player.name}" 
-                         loading="lazy"
-                         onerror="this.src='https://via.placeholder.com/300x400?text=Indisponível'">
+                    <div class="player-image" style="background: linear-gradient(135deg, #0066cc 0%, #00d4ff 100%); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: white; font-weight: 800;">
+                        ${player.name.split(' ').map(n => n[0]).join('')}
+                    </div>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">${player.name}</h5>
@@ -122,7 +86,7 @@ function renderPlayers(players) {
                     </div>
                 </div>
                 <div class="card-footer bg-white">
-                    <a href="detalhes.html?id=${index}" class="btn btn-primary btn-sm w-100">
+                    <a href="detalhes.html?id=${index}" target="_blank" class="btn btn-primary btn-sm w-100">
                         Ver Detalhes
                     </a>
                 </div>
